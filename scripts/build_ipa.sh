@@ -22,10 +22,11 @@ echo "    SDK: $SDK ($(xcrun --sdk iphoneos --show-sdk-version))"
 rm -rf "$OUT_DIR"
 mkdir -p "$APP_BUNDLE"
 
-echo "==> Компиляция $APP_NAME (arm64, iOS >= $MIN_IOS)"
+echo "==> Compiling $APP_NAME (arm64, iOS >= $MIN_IOS)"
 swiftc \
   -sdk "$SDK" \
   -target "arm64-apple-ios${MIN_IOS}" \
+  -parse-as-library \
   -O -whole-module-optimization \
   -module-name "$APP_NAME" \
   -o "$APP_BUNDLE/$APP_NAME" \
